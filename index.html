@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Be My Valentine? 💖</title>
+    <title>Amar Valentine hoba? 😁💖</title>
     
-    <!-- Google Fonts - Pixel/Arcade Style -->
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
@@ -732,16 +731,22 @@
             <div class="letter-decoration bottom-right">🌺</div>
             
             <div class="letter-content" id="letterContent">
-I think of you daily and yearn for the times we stay together. My skin breathes the scent of your beautiful clothes. They smell so clean, and that always reminds me of home. I just want to say this: you are already so strong, and without ever needing me. Most days, you assure me that you think, I hope, I wish I could bring to you even if my time isn't always perfect. My feelings and my affection, I give to you for all eternity. But I pray that the sun never sets on our love without you, and I hope you're there when the stars return. Yes, I know it's stupid, but you are everything. You're my babe and always will be.
+You have not only been the best part of 2025 or the Durga Pujo, You are the best part of my whole life. Jani ami ektu besi mukhe boli rather than kaaj e. Ar sudhu tumi bolcho bole na eta amay maa o bole, ar eta ami nijeo bujte pari kintu abeg e bole pheli arki, chesta kori jotota mukhe bolar totai kaaj e kore dekhanor. koto bhalo moments katiyechi eksathe, koto kichu eksathe korechi prothom bar jegulo bhabini kokhuno korte pari ami, seta eka rasta chine pujo dekhai hok, ki ochena market e tomar jonno jinis kena. Nijeke jotota na nije chini tumi aro besi kore chiniyecho, asas diyecho je parbo ami, tar jonno ami shotti khub thankful.
 
-I'm only visiting you now because it's really, freaking hard for me to actually think about what it would be like with no you. Because I haven't had one since. It's unusual just how much you've become a part of me. I mean, I guess, who are we without love? No one, actually.
+Tumi amay prottek din aro bhalo, better manus howar help koro. Ami jani tumi kotota bhalobaso amay, shotti ami bhabini etota keu bhalobasbe amay keu bujhbe, etota keu ador korbe, etota keu bojhabe. Aj o amar kache aschorjo lage amader dekha howa ta eto close hoye jawa ta, eta toh thiki jar jonno je lekha ache universe thik kichu na kichu bhabe miliye dey but tarpor seta protect kora amader daitto. Khub bhalo lage go tomake shotti, sobsomat bhebe eschi je hoytoh amar dara bhalobasa hobe na, hoytoh ami baste parina bhalo amar modhey dosh ache. Onek dosh ache thiki, onek kichu niye didhay thaki thiki kintu tomay bhalobasa ta tader modhe noy. Jani boddo baje ekta LOK ami, kosto diye feli onek somoy, tar jonno shotti sorry. 
+
+Eto kichur por o amay je etota bhalobaso etar jonno ami shotti dhonno. Bhaggis punno korechilam haa, obosho tumi ektu addo khujro punno korechile hoytoh tai amake peyecho hihi 😜, na go moja korchi. Jai hok ami tomay jete debo na kothao bole dilam tumi chaileo debone, DEBONA DEBONA DEBONA. khub bhalobasi baba. ONEKTAAA.
+
+Here's to our first Valentine together and many more to come.
+
+Happy Valentine's Day baba 🌻❤️💛
 
 <div class="pressed-flower">🌹</div>
 
 <div class="letter-signature">Love,
 Sayan</div>
 
-<div class="letter-ps">P.S. Sayan loves you the most ok. THE MOST. Parbo baba amra chinta koro na.</div>
+<div class="letter-ps">P.S. Sayan loves you the most ok. THE MOST. Parbo baba amra, dekho amra parbo, just hath chero na kokhuno.</div>
             </div>
         </div>
     </div>
@@ -880,7 +885,7 @@ Sayan</div>
             '😞',      // 6 - Sad/disappointed
             '🥹',      // 7 - Touched/emotional
             '😿',      // 8 - Crying harder
-            '😭💔'     // 9 - Final: Crying with broken heart
+            '😭'     // 9 - Final: Crying with broken heart
         ];
 
         // Button elements
@@ -900,16 +905,16 @@ Sayan</div>
 
         // Messages for each attempt
         const messages = [
-            "Are you sure? 🤔",
-            "Really? Think again! 😊",
-            "Come on now... 😏",
-            "You know you want to! 💕",
-            "Just say yes already! ❤️",
-            "The Yes button is so lonely... 🥺",
-            "Please? Pretty please? 🙏",
-            "I'll be so happy! 😍",
-            "One tap on Yes? 💖",
-            "You're breaking my heart... 💔"
+            "Eki re? 🤨",
+            "Are eki! 🫤",
+            "Kharap hoche kintu 🫥",
+            "Shona baba amar kore na erom 😑",
+            "Koto bhalobasi kore bolo erom 🙁",
+            "Kore na kore na 🥺",
+            "O maa kore na maa 😗",
+            "Lokhiti amar 😙",
+            "Kadbo kintu 😢",
+            "Kadchi tahole 😭💔"
         ];
 
         // Handle "No" button tap
@@ -935,29 +940,33 @@ Sayan</div>
             if (noAttempts === 1) {
                 // First attempt: just show message
             } else if (noAttempts === 2) {
-                // Start moving around the screen
+                // Start moving around INSIDE the box
                 noBtn.classList.add('moving');
                 
-                // Get box position to avoid it
+                // Get box position
                 const box = document.querySelector('.pixel-box');
                 const boxRect = box.getBoundingClientRect();
-                const boxCenterX = boxRect.left + boxRect.width / 2;
-                const boxCenterY = boxRect.top + boxRect.height / 2;
                 
-                // Calculate position outside the box area
-                let randomX, randomY;
-                let attempts = 0;
+                // Get actual button size
+                const btnRect = noBtn.getBoundingClientRect();
+                const btnWidth = btnRect.width;
+                const btnHeight = btnRect.height;
                 
-                do {
-                    randomX = Math.random() * (window.innerWidth - 150) + 50;
-                    randomY = Math.random() * (window.innerHeight - 100) + 50;
-                    attempts++;
-                } while (
-                    // Avoid the box area (with padding)
-                    (Math.abs(randomX - boxCenterX) < boxRect.width / 2 + 50 &&
-                     Math.abs(randomY - boxCenterY) < boxRect.height / 2 + 50) &&
-                    attempts < 20
-                );
+                // More generous padding to keep button fully visible
+                const padding = 25;
+                
+                // Calculate safe zone INSIDE the box
+                const minX = boxRect.left + padding + btnWidth / 2;
+                const maxX = boxRect.right - padding - btnWidth / 2;
+                const minY = boxRect.top + padding + btnHeight / 2;
+                const maxY = boxRect.bottom - padding - btnHeight / 2;
+                
+                // Ensure we have valid ranges
+                const safeMaxX = Math.max(minX, maxX);
+                const safeMaxY = Math.max(minY, maxY);
+                
+                const randomX = Math.random() * (safeMaxX - minX) + minX;
+                const randomY = Math.random() * (safeMaxY - minY) + minY;
                 
                 noBtn.style.left = randomX + 'px';
                 noBtn.style.top = randomY + 'px';
@@ -976,25 +985,30 @@ Sayan</div>
                 noBtn.style.transform = `translate(-50%, -50%) scale(${noBtnScale})`;
                 yesBtn.style.transform = `scale(${yesBtnScale})`;
                 
-                // Keep moving around the screen, avoiding box
+                // Keep moving around INSIDE the box
                 const box = document.querySelector('.pixel-box');
                 const boxRect = box.getBoundingClientRect();
-                const boxCenterX = boxRect.left + boxRect.width / 2;
-                const boxCenterY = boxRect.top + boxRect.height / 2;
                 
-                let randomX, randomY;
-                let attempts = 0;
+                // Get actual button size (accounting for scale)
+                const btnRect = noBtn.getBoundingClientRect();
+                const btnWidth = btnRect.width;
+                const btnHeight = btnRect.height;
                 
-                do {
-                    randomX = Math.random() * (window.innerWidth - 150) + 50;
-                    randomY = Math.random() * (window.innerHeight - 100) + 50;
-                    attempts++;
-                } while (
-                    // Avoid the box area (with padding)
-                    (Math.abs(randomX - boxCenterX) < boxRect.width / 2 + 50 &&
-                     Math.abs(randomY - boxCenterY) < boxRect.height / 2 + 50) &&
-                    attempts < 20
-                );
+                // More generous padding
+                const padding = 25;
+                
+                // Calculate safe zone INSIDE the box
+                const minX = boxRect.left + padding + btnWidth / 2;
+                const maxX = boxRect.right - padding - btnWidth / 2;
+                const minY = boxRect.top + padding + btnHeight / 2;
+                const maxY = boxRect.bottom - padding - btnHeight / 2;
+                
+                // Ensure we have valid ranges
+                const safeMaxX = Math.max(minX, maxX);
+                const safeMaxY = Math.max(minY, maxY);
+                
+                const randomX = Math.random() * (safeMaxX - minX) + minX;
+                const randomY = Math.random() * (safeMaxY - minY) + minY;
                 
                 noBtn.style.left = randomX + 'px';
                 noBtn.style.top = randomY + 'px';
