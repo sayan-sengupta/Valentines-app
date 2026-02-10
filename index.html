@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Be My Valentine? 💖</title>
+    
+    <!-- Google Fonts - Pixel/Arcade Style -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Press Start 2P', cursive;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #ffdde1 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Floating hearts background - full screen */
+        .floating-heart {
+            position: fixed;
+            font-size: 24px;
+            animation: float 6s infinite ease-in-out;
+            opacity: 0.5;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-40px) rotate(15deg);
+            }
+        }
+
+        /* Decorated transparent box container */
+        .pixel-box {
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 4px solid #ff4081;
+            border-radius: 20px;
+            box-shadow: 
+                0 0 0 4px #fff,
+                0 0 0 8px #ff4081,
+                0 8px 32px rgba(255, 64, 129, 0.3),
+                inset 0 0 20px rgba(255, 255, 255, 0.2);
+            padding: 35px 25px;
+            max-width: 450px;
+            width: 100%;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Corner decorations */
+        .corner-decoration {
+            position: absolute;
+            font-size: 24px;
+            animation: rotate-sparkle 3s linear infinite;
+        }
+
+        .corner-decoration.top-left {
+            top: -12px;
+            left: -12px;
+        }
+
+        .corner-decoration.top-right {
+            top: -12px;
+            right: -12px;
+        }
+
+        .corner-decoration.bottom-left {
+            bottom: -12px;
+            left: -12px;
+        }
+
+        .corner-decoration.bottom-right {
+            bottom: -12px;
+            right: -12px;
+        }
+
+        @keyframes rotate-sparkle {
+            0%, 100% {
+                transform: rotate(0deg) scale(1);
+            }
+            50% {
+                transform: rotate(180deg) scale(1.2);
+            }
+        }
+
+        /* Decorative border hearts */
+        .border-heart {
+            position: absolute;
+            font-size: 16px;
+            animation: pulse-small 2s infinite;
+        }
+
+        .border-heart.top {
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .border-heart.bottom {
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .border-heart.left {
+            left: -8px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .border-heart.right {
+            right: -8px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        @keyframes pulse-small {
+            0%, 100% {
+                transform: translate(-50%, 0) scale(1);
+            }
+            50% {
+                transform: translate(-50%, 0) scale(1.3);
+            }
+        }
+
+        /* Main question */
+        h1 {
+            color: #ff1744;
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            text-shadow: 
+                2px 2px 0px rgba(255, 255, 255, 0.8),
+                3px 3px 0px rgba(255, 23, 68, 0.3);
+            text-align: center;
+        }
+
+        /* Boy image container */
+        .boy-image-container {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 30px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .boy-image {
+            width: 100%;
+            height: 100%;
+            font-size: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            text-align: center;
+            line-height: 1;
+        }
+
+        .boy-image.bounce {
+            animation: sad-bounce 0.5s ease;
+        }
+
+        @keyframes sad-bounce {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(0.9);
+            }
+        }
+
+        /* Button container */
+        .button-container {
+            position: relative;
+            min-height: 150px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+        
+        .no-button-wrapper {
+            position: relative;
+            width: 100%;
+            min-height: 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        /* Button styles */
+        .btn {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 14px;
+            padding: 18px 35px;
+            border: 5px solid #000;
+            border-radius: 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 6px 6px 0 #000;
+            position: relative;
+            touch-action: manipulation;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .btn:active {
+            box-shadow: 3px 3px 0 #000;
+            transform: translate(3px, 3px);
+        }
+
+        .btn-yes {
+            background: #ff4081;
+            color: white;
+            z-index: 5;
+        }
+
+        .btn-no {
+            background: #f5f5f5;
+            color: #333;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .btn-no.moving {
+            position: fixed;
+            z-index: 999;
+        }
+
+        /* Message text above No button */
+        .message {
+            font-size: 11px;
+            color: #ff1744;
+            min-height: 35px;
+            line-height: 1.4;
+            text-align: center;
+            width: 100%;
+        }
+
+        /* Envelope screen - decorated */
+        .envelope-screen {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(135deg, #ff6b9d 0%, #ffa8b8 50%, #c06c84 100%);
+            z-index: 1000;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        .envelope-screen.active {
+            display: flex;
+        }
+
+        /* Animated hearts for envelope screen */
+        .envelope-screen-heart {
+            position: absolute;
+            font-size: 30px;
+            animation: float-diagonal 8s infinite ease-in-out;
+            opacity: 0.4;
+        }
+
+        @keyframes float-diagonal {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(30px, -30px) rotate(10deg);
+            }
+            50% {
+                transform: translate(0, -60px) rotate(0deg);
+            }
+            75% {
+                transform: translate(-30px, -30px) rotate(-10deg);
+            }
+        }
+
+        /* Sparkles on envelope screen */
+        .sparkle {
+            position: absolute;
+            font-size: 20px;
+            animation: sparkle-twinkle 2s infinite;
+        }
+
+        @keyframes sparkle-twinkle {
+            0%, 100% {
+                opacity: 0.3;
+                transform: scale(0.8);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+        }
+
+        .envelope-text {
+            font-size: 16px;
+            color: white;
+            margin-bottom: 30px;
+            text-align: center;
+            text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.3);
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px 25px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Envelope */
+        .envelope {
+            position: relative;
+            width: 200px;
+            height: 130px;
+            cursor: pointer;
+            animation: envelope-bounce 1.5s infinite;
+            z-index: 10;
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+        }
+
+        @keyframes envelope-bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        .envelope-body {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            border: 4px solid #000;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .envelope-flap {
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            width: 0;
+            height: 0;
+            border-left: 102px solid transparent;
+            border-right: 102px solid transparent;
+            border-top: 70px solid #ff6b9d;
+            border-bottom: 4px solid #000;
+            z-index: 2;
+            transition: transform 0.5s ease;
+        }
+
+        .envelope.opening .envelope-flap {
+            transform: rotateX(180deg);
+            transform-origin: top;
+        }
+
+        .envelope-text-on {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 14px;
+            color: #000;
+            z-index: 1;
+            text-align: center;
+        }
+
+        /* Hearts floating around envelope */
+        .envelope-heart-circle {
+            position: absolute;
+            font-size: 20px;
+            animation: circle-float 3s infinite ease-in-out;
+        }
+
+        .envelope-heart-circle:nth-child(1) {
+            top: -40px;
+            left: -40px;
+            animation-delay: 0s;
+        }
+
+        .envelope-heart-circle:nth-child(2) {
+            top: -40px;
+            right: -40px;
+            animation-delay: 0.5s;
+        }
+
+        .envelope-heart-circle:nth-child(3) {
+            bottom: -40px;
+            left: -40px;
+            animation-delay: 1s;
+        }
+
+        .envelope-heart-circle:nth-child(4) {
+            bottom: -40px;
+            right: -40px;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes circle-float {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+            }
+            50% {
+                transform: translateY(-10px) scale(1.2);
+            }
+        }
+
+        /* Letter popup */
+        .letter-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .letter-popup.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .letter-container {
+            background: #f5e6d3;
+            width: 100%;
+            max-width: 500px;
+            max-height: 90vh;
+            padding: 40px 30px;
+            box-shadow: 
+                0 0 0 2px #8b4513,
+                0 20px 60px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow-y: auto;
+            animation: letterSlideIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            border: 1px solid #d4a574;
+        }
+
+        @keyframes letterSlideIn {
+            from {
+                transform: translateY(-100vh) rotate(-10deg);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0) rotate(0);
+                opacity: 1;
+            }
+        }
+
+        .letter-content {
+            font-family: 'Caveat', cursive;
+            font-size: 20px;
+            line-height: 1.8;
+            color: #2c1810;
+            text-align: left;
+            white-space: pre-line;
+        }
+
+        .letter-decoration {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+        }
+
+        .letter-decoration.top-left {
+            top: 15px;
+            left: 15px;
+        }
+
+        .letter-decoration.bottom-right {
+            bottom: 15px;
+            right: 15px;
+        }
+
+        /* Pressed flower decoration */
+        .pressed-flower {
+            position: absolute;
+            bottom: 80px;
+            right: 30px;
+            font-size: 40px;
+            opacity: 0.7;
+            transform: rotate(-15deg);
+        }
+
+        .letter-signature {
+            margin-top: 30px;
+            text-align: right;
+            font-size: 24px;
+            font-style: italic;
+        }
+
+        .letter-ps {
+            margin-top: 20px;
+            font-size: 18px;
+            font-style: italic;
+            text-align: center;
+        }
+
+        .close-letter {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 30px;
+            height: 30px;
+            background: #ff4081;
+            border: 2px solid #000;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Confetti */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            animation: confetti-fall 3s linear;
+            pointer-events: none;
+        }
+
+        @keyframes confetti-fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 400px) {
+            h1 {
+                font-size: 13px;
+            }
+            
+            .btn {
+                font-size: 12px;
+                padding: 15px 28px;
+            }
+            
+            .boy-image-container {
+                width: 150px;
+                height: 150px;
+            }
+
+            .boy-image {
+                font-size: 100px;
+            }
+
+            .pixel-box {
+                padding: 25px 15px;
+            }
+
+            .letter-content {
+                font-size: 18px;
+            }
+
+            .letter-container {
+                padding: 30px 20px;
+            }
+        }
+
+        @media (max-height: 700px) {
+            .pixel-box {
+                padding: 20px 15px;
+            }
+            
+            h1 {
+                font-size: 14px;
+                margin-bottom: 20px;
+            }
+
+            .boy-image-container {
+                width: 140px;
+                height: 140px;
+                margin-bottom: 20px;
+            }
+
+            .boy-image {
+                font-size: 90px;
+            }
+        }
+
+        /* Smooth scrolling for letter */
+        .letter-container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .letter-container::-webkit-scrollbar-track {
+            background: #d4a574;
+        }
+
+        .letter-container::-webkit-scrollbar-thumb {
+            background: #8b4513;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating hearts background - full screen -->
+    <div class="floating-heart" style="left: 5%; top: 10%; animation-delay: 0s;">💖</div>
+    <div class="floating-heart" style="left: 85%; top: 15%; animation-delay: 1s;">💕</div>
+    <div class="floating-heart" style="left: 10%; top: 40%; animation-delay: 2s;">💗</div>
+    <div class="floating-heart" style="left: 90%; top: 50%; animation-delay: 3s;">💝</div>
+    <div class="floating-heart" style="left: 15%; top: 70%; animation-delay: 1.5s;">❤️</div>
+    <div class="floating-heart" style="left: 80%; top: 80%; animation-delay: 2.5s;">💓</div>
+    <div class="floating-heart" style="left: 50%; top: 5%; animation-delay: 0.5s;">💖</div>
+    <div class="floating-heart" style="left: 30%; top: 85%; animation-delay: 3.5s;">💕</div>
+
+    <!-- Decorated transparent box container -->
+    <div class="pixel-box">
+        <!-- Corner decorations -->
+        <div class="corner-decoration top-left">✨</div>
+        <div class="corner-decoration top-right">✨</div>
+        <div class="corner-decoration bottom-left">💝</div>
+        <div class="corner-decoration bottom-right">💝</div>
+        
+        <!-- Border hearts -->
+        <div class="border-heart top">💕</div>
+        <div class="border-heart bottom">💕</div>
+        <div class="border-heart left">💖</div>
+        <div class="border-heart right">💖</div>
+        
+        <h1 id="main-question">Hey Priyo Bondhu, will you be my Valentine? ❤️</h1>
+        
+        <!-- Boy image that changes with emotions -->
+        <div class="boy-image-container">
+            <div class="boy-image" id="boyImage">😊</div>
+        </div>
+        
+        <div class="button-container">
+            <button class="btn btn-yes" id="yesBtn">
+                Yes 💖
+            </button>
+            
+            <div class="no-button-wrapper">
+                <div class="message" id="noMessage"></div>
+                <button class="btn btn-no" id="noBtn">
+                    No 💔
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Envelope screen - decorated -->
+    <div class="envelope-screen" id="envelopeScreen">
+        <!-- Floating hearts decoration -->
+        <div class="envelope-screen-heart" style="top: 10%; left: 10%; animation-delay: 0s;">💖</div>
+        <div class="envelope-screen-heart" style="top: 20%; right: 15%; animation-delay: 1s;">💕</div>
+        <div class="envelope-screen-heart" style="bottom: 20%; left: 20%; animation-delay: 2s;">💗</div>
+        <div class="envelope-screen-heart" style="bottom: 15%; right: 10%; animation-delay: 1.5s;">💝</div>
+        
+        <!-- Sparkles -->
+        <div class="sparkle" style="top: 15%; left: 30%; animation-delay: 0s;">✨</div>
+        <div class="sparkle" style="top: 25%; right: 25%; animation-delay: 0.5s;">⭐</div>
+        <div class="sparkle" style="bottom: 25%; left: 25%; animation-delay: 1s;">✨</div>
+        <div class="sparkle" style="bottom: 20%; right: 30%; animation-delay: 1.5s;">⭐</div>
+        <div class="sparkle" style="top: 50%; left: 15%; animation-delay: 0.7s;">✨</div>
+        <div class="sparkle" style="top: 50%; right: 20%; animation-delay: 1.2s;">⭐</div>
+        
+        <div class="envelope-text">You made the right choice! 💕<br><br>Open Me ↓</div>
+        
+        <div style="position: relative;">
+            <!-- Hearts floating around envelope -->
+            <div class="envelope-heart-circle">💖</div>
+            <div class="envelope-heart-circle">💕</div>
+            <div class="envelope-heart-circle">💗</div>
+            <div class="envelope-heart-circle">💝</div>
+            
+            <div class="envelope" id="envelope">
+                <div class="envelope-flap"></div>
+                <div class="envelope-body"></div>
+                <div class="envelope-text-on">Open Me 💌</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Letter popup -->
+    <div class="letter-popup" id="letterPopup">
+        <div class="letter-container">
+            <button class="close-letter" id="closeLetter">×</button>
+            
+            <div class="letter-decoration top-left">🌸</div>
+            <div class="letter-decoration bottom-right">🌺</div>
+            
+            <div class="letter-content" id="letterContent">
+I think of you daily and yearn for the times we stay together. My skin breathes the scent of your beautiful clothes. They smell so clean, and that always reminds me of home. I just want to say this: you are already so strong, and without ever needing me. Most days, you assure me that you think, I hope, I wish I could bring to you even if my time isn't always perfect. My feelings and my affection, I give to you for all eternity. But I pray that the sun never sets on our love without you, and I hope you're there when the stars return. Yes, I know it's stupid, but you are everything. You're my babe and always will be.
+
+I'm only visiting you now because it's really, freaking hard for me to actually think about what it would be like with no you. Because I haven't had one since. It's unusual just how much you've become a part of me. I mean, I guess, who are we without love? No one, actually.
+
+<div class="pressed-flower">🌹</div>
+
+<div class="letter-signature">Love,
+Sayan</div>
+
+<div class="letter-ps">P.S. Sayan loves you the most ok. THE MOST. Parbo baba amra chinta koro na.</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sound generation using Web Audio API
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        
+        // 8-bit error sound
+        function playErrorSound() {
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.frequency.value = 200;
+            oscillator.type = 'square';
+            
+            gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
+            
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.1);
+        }
+
+        // 8-bit success sound
+        function playSuccessSound() {
+            const notes = [523.25, 659.25, 783.99]; // C, E, G
+            let time = audioContext.currentTime;
+            
+            notes.forEach((freq, index) => {
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.frequency.value = freq;
+                oscillator.type = 'square';
+                
+                const startTime = time + (index * 0.15);
+                gainNode.gain.setValueAtTime(0.3, startTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, startTime + 0.2);
+                
+                oscillator.start(startTime);
+                oscillator.stop(startTime + 0.2);
+            });
+        }
+
+        // Envelope opening sound - realistic paper rustling
+        function playEnvelopeSound() {
+            // Create a rustling/paper sound effect
+            const bufferSize = audioContext.sampleRate * 0.5; // 0.5 seconds
+            const buffer = audioContext.createBuffer(1, bufferSize, audioContext.sampleRate);
+            const data = buffer.getChannelData(0);
+            
+            // Generate noise for paper rustling effect
+            for (let i = 0; i < bufferSize; i++) {
+                data[i] = (Math.random() * 2 - 1) * 0.15;
+            }
+            
+            const noiseSource = audioContext.createBufferSource();
+            noiseSource.buffer = buffer;
+            
+            const filter = audioContext.createBiquadFilter();
+            filter.type = 'bandpass';
+            filter.frequency.value = 2000;
+            filter.Q.value = 1;
+            
+            const gainNode = audioContext.createGain();
+            gainNode.gain.setValueAtTime(0, audioContext.currentTime);
+            gainNode.gain.linearRampToValueAtTime(0.3, audioContext.currentTime + 0.05);
+            gainNode.gain.linearRampToValueAtTime(0.15, audioContext.currentTime + 0.2);
+            gainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime + 0.5);
+            
+            noiseSource.connect(filter);
+            filter.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            noiseSource.start(audioContext.currentTime);
+            noiseSource.stop(audioContext.currentTime + 0.5);
+            
+            // Add a gentle tone for magical effect
+            setTimeout(() => {
+                const oscillator = audioContext.createOscillator();
+                const toneGain = audioContext.createGain();
+                
+                oscillator.connect(toneGain);
+                toneGain.connect(audioContext.destination);
+                
+                oscillator.frequency.value = 800;
+                oscillator.type = 'sine';
+                
+                toneGain.gain.setValueAtTime(0.1, audioContext.currentTime);
+                toneGain.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
+                
+                oscillator.start(audioContext.currentTime);
+                oscillator.stop(audioContext.currentTime + 0.3);
+            }, 100);
+        }
+
+        // Vibration
+        function vibrate(duration = 50) {
+            if (navigator.vibrate) {
+                navigator.vibrate(duration);
+            }
+        }
+
+        // Create confetti
+        function createConfetti() {
+            const colors = ['#ff4081', '#ff6b9d', '#ffd4e5', '#fff', '#ffb3c1'];
+            for (let i = 0; i < 40; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.top = '-10px';
+                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+                    document.body.appendChild(confetti);
+                    
+                    setTimeout(() => confetti.remove(), 3000);
+                }, i * 30);
+            }
+        }
+
+        // Boy emotion expressions (10 different emotions)
+        const boyEmotions = [
+            '😊',      // 0 - Initial happy
+            '😳',      // 1 - Shocked/surprised
+            '🥺',      // 2 - Puppy eyes/pleading
+            '😢',      // 3 - Crying
+            '😭',      // 4 - Sobbing
+            '💔',      // 5 - Heartbroken
+            '😞',      // 6 - Sad/disappointed
+            '🥹',      // 7 - Touched/emotional
+            '😿',      // 8 - Crying harder
+            '😭💔'     // 9 - Final: Crying with broken heart
+        ];
+
+        // Button elements
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const noMessage = document.getElementById('noMessage');
+        const envelopeScreen = document.getElementById('envelopeScreen');
+        const envelope = document.getElementById('envelope');
+        const letterPopup = document.getElementById('letterPopup');
+        const closeLetter = document.getElementById('closeLetter');
+        const boyImage = document.getElementById('boyImage');
+
+        // Track "No" button attempts
+        let noAttempts = 0;
+        let yesBtnScale = 1;
+        let noBtnScale = 1;
+
+        // Messages for each attempt
+        const messages = [
+            "Are you sure? 🤔",
+            "Really? Think again! 😊",
+            "Come on now... 😏",
+            "You know you want to! 💕",
+            "Just say yes already! ❤️",
+            "The Yes button is so lonely... 🥺",
+            "Please? Pretty please? 🙏",
+            "I'll be so happy! 😍",
+            "One tap on Yes? 💖",
+            "You're breaking my heart... 💔"
+        ];
+
+        // Handle "No" button tap
+        noBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            noAttempts++;
+            
+            // Play error sound and vibrate
+            playErrorSound();
+            vibrate(50);
+
+            // Change boy emotion (max 10 expressions)
+            const emotionIndex = Math.min(noAttempts, boyEmotions.length - 1);
+            boyImage.textContent = boyEmotions[emotionIndex];
+            boyImage.classList.add('bounce');
+            setTimeout(() => boyImage.classList.remove('bounce'), 500);
+
+            // Update message
+            const messageIndex = Math.min(noAttempts - 1, messages.length - 1);
+            noMessage.textContent = messages[messageIndex];
+
+            // Progressive changes based on attempts
+            if (noAttempts === 1) {
+                // First attempt: just show message
+            } else if (noAttempts === 2) {
+                // Start moving around the screen
+                noBtn.classList.add('moving');
+                
+                // Get box position to avoid it
+                const box = document.querySelector('.pixel-box');
+                const boxRect = box.getBoundingClientRect();
+                const boxCenterX = boxRect.left + boxRect.width / 2;
+                const boxCenterY = boxRect.top + boxRect.height / 2;
+                
+                // Calculate position outside the box area
+                let randomX, randomY;
+                let attempts = 0;
+                
+                do {
+                    randomX = Math.random() * (window.innerWidth - 150) + 50;
+                    randomY = Math.random() * (window.innerHeight - 100) + 50;
+                    attempts++;
+                } while (
+                    // Avoid the box area (with padding)
+                    (Math.abs(randomX - boxCenterX) < boxRect.width / 2 + 50 &&
+                     Math.abs(randomY - boxCenterY) < boxRect.height / 2 + 50) &&
+                    attempts < 20
+                );
+                
+                noBtn.style.left = randomX + 'px';
+                noBtn.style.top = randomY + 'px';
+                noBtn.style.transform = 'translate(-50%, -50%)';
+            } else if (noAttempts === 3) {
+                // Start shrinking No, growing Yes
+                noBtnScale = 0.85;
+                yesBtnScale = 1.1;
+                noBtn.style.transform = `translate(-50%, -50%) scale(${noBtnScale})`;
+                yesBtn.style.transform = `scale(${yesBtnScale})`;
+            } else if (noAttempts >= 4) {
+                // Continue shrinking and growing with better ratio
+                noBtnScale = Math.max(0.15, noBtnScale - 0.12);
+                yesBtnScale = Math.min(1.4, yesBtnScale + 0.05);
+                
+                noBtn.style.transform = `translate(-50%, -50%) scale(${noBtnScale})`;
+                yesBtn.style.transform = `scale(${yesBtnScale})`;
+                
+                // Keep moving around the screen, avoiding box
+                const box = document.querySelector('.pixel-box');
+                const boxRect = box.getBoundingClientRect();
+                const boxCenterX = boxRect.left + boxRect.width / 2;
+                const boxCenterY = boxRect.top + boxRect.height / 2;
+                
+                let randomX, randomY;
+                let attempts = 0;
+                
+                do {
+                    randomX = Math.random() * (window.innerWidth - 150) + 50;
+                    randomY = Math.random() * (window.innerHeight - 100) + 50;
+                    attempts++;
+                } while (
+                    // Avoid the box area (with padding)
+                    (Math.abs(randomX - boxCenterX) < boxRect.width / 2 + 50 &&
+                     Math.abs(randomY - boxCenterY) < boxRect.height / 2 + 50) &&
+                    attempts < 20
+                );
+                
+                noBtn.style.left = randomX + 'px';
+                noBtn.style.top = randomY + 'px';
+            }
+        });
+
+        // Handle "Yes" button tap
+        yesBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Play success sound and vibrate
+            playSuccessSound();
+            vibrate([100, 50, 100]);
+            
+            // Create confetti
+            createConfetti();
+            
+            // Show envelope screen
+            envelopeScreen.classList.add('active');
+        });
+
+        // Handle envelope tap
+        envelope.addEventListener('click', function() {
+            playEnvelopeSound();
+            vibrate(100);
+            
+            // Animate envelope opening
+            envelope.classList.add('opening');
+            
+            // Show letter after animation
+            setTimeout(() => {
+                letterPopup.classList.add('active');
+            }, 500);
+        });
+
+        // Close letter
+        closeLetter.addEventListener('click', function() {
+            letterPopup.classList.remove('active');
+        });
+
+        // Prevent context menu on long press
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        // Initialize audio context on first user interaction
+        let audioInitialized = false;
+        document.addEventListener('touchstart', function() {
+            if (!audioInitialized) {
+                audioContext.resume();
+                audioInitialized = true;
+            }
+        }, { once: true });
+
+        // Also handle click for desktop testing
+        document.addEventListener('click', function() {
+            if (!audioInitialized) {
+                audioContext.resume();
+                audioInitialized = true;
+            }
+        }, { once: true });
+    </script>
+</body>
+</html>
